@@ -214,3 +214,60 @@ void breedBunnies(Bunny*& head) {
     }
 }
 
+void foodShortage(Bunny*& head) {
+    if (lengthBunnyList(head) <= 1000)
+        return;
+    while (head && (std::rand() % 2 == 0)) {
+        Bunny* temp = head;
+        head = head->next;
+        delete temp;
+    }
+
+    if (head) {
+        Bunny* current = head;
+        while (current->next) {
+            if (std::rand() % 2 == 0) { // 1/2 chances to die
+                Bunny* temp = current->next;
+                current->next = temp->next;
+                delete temp;
+            } else {
+                current = current->next; // Saved !
+            }
+        }
+    }
+}
+
+void infectBunnies(Bunny* head) {
+    // Counting the vampires
+    int vampireCount = 0;
+    Bunny* temp = head; // temp to not lose head's address
+
+    while (temp != nullptr) {
+        if (temp->isRadioactive_Mutant_Vampire_Bunny()) {
+            vampireCount++;
+        }
+        temp = temp->next;
+    }
+
+    // If there's no vampires
+    if (vampireCount == 0) return;
+
+    // Go through the list again to infect
+    temp = head; // come back to the beginning
+
+    // If there's still bunnies && vampireCount isn't 0
+    while (temp != nullptr && vampireCount > 0) {
+        // Looking for only normal bunnies
+        if (!temp->isRadioactive_Mutant_Vampire_Bunny()) {
+
+            // Transform the victim bunny
+            temp->setRadioactive_Mutant_Vampire_Bunny(true);
+            std::cout << "Bunny " << temp->getNameBunny() << " has turned into a Vampire!" << std::endl;
+
+            // One infection done :)
+            vampireCount--;
+        }
+
+        temp = temp->next; // Looking for the new victim -_-
+    }
+}

@@ -139,6 +139,11 @@ public:
     bool isRadioactive_Mutant_Vampire_Bunny() const {
         return this->radioactive_mutant_vampire_bunny;
     }
+
+    // Setter to turn the normal bunny
+    void setRadioactive_Mutant_Vampire_Bunny(bool isVampire) {
+        this->radioactive_mutant_vampire_bunny = isVampire;
+    }
 };
 
 void appendBunny(Bunny*& head);
@@ -146,5 +151,8 @@ int lengthBunnyList(Bunny* bunny);
 void showBunnies(const Bunny* head);
 void freeBunnies(Bunny*& head);
 void removeDeadBunnies(Bunny*& head);
+void breedBunnies(Bunny*& head);
+void foodShortage(Bunny*& head);
+void infectBunnies(Bunny* head);
 
 #endif // BUNNY_H

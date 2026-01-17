@@ -23,8 +23,14 @@ int main() {
         // Age all bunnies
         bunnyList->anniversaryBunny();
 
+        breedBunnies(bunnyList);
+
+        infectBunnies(bunnyList);
+
         // Remove dead bunnies
         removeDeadBunnies(bunnyList);
+
+        foodShortage(bunnyList);
 
         // Show remaining bunnies
         if (bunnyList != nullptr) {
@@ -33,6 +39,9 @@ int main() {
         } else {
             std::cout << "\nAll bunnies have died... Game over!" << std::endl;
         }
+
+        // std::cout << "Press Enter for next turn...";
+        // std::cin.get();
 
         turn++;
     }
