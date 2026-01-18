@@ -271,3 +271,38 @@ void infectBunnies(Bunny* head) {
         temp = temp->next; // Looking for the new victim -_-
     }
 }
+
+void sortBunnies(Bunny* head) {
+    if (head == nullptr) return;
+
+    bool sorted = true;
+
+    while (sorted) {
+
+        sorted = false;
+        Bunny* current = head;
+
+        while (current->next != nullptr) {
+
+            if (current->getAgeBunny() > current->next->getAgeBunny()) {
+                int tempAge = current->getAgeBunny();
+                current->setAge(current->next->getAgeBunny());
+                current->next->setAge(tempAge);
+                Color tempColor = current->getColor();
+                current->setColor(current->next->getColor());
+                current->next->setColor(tempColor);
+                std::string tempName = current->getNameBunny();
+                current->setName(current->next->getNameBunny());
+                current->next->setName(tempName);
+                Sex tempSex = current->getSex();
+                current->setSex(current->next->getSex());
+                current->next->setSex(tempSex);
+                bool tempVampire = current->isRadioactive_Mutant_Vampire_Bunny();
+                current->setRadioactive_Mutant_Vampire_Bunny(current->next->isRadioactive_Mutant_Vampire_Bunny());
+                current->next->setRadioactive_Mutant_Vampire_Bunny(tempVampire);
+                sorted = true;
+            }
+            current = current->next;
+        }
+    }
+}

@@ -32,6 +32,8 @@ int main() {
 
         foodShortage(bunnyList);
 
+        sortBunnies(bunnyList);
+
         // Show remaining bunnies
         if (bunnyList != nullptr) {
             std::cout << "\nRemaining bunnies: " << lengthBunnyList(bunnyList) << std::endl;

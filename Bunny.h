@@ -59,6 +59,10 @@ public:
         return (sex == Sex::Male) ? "Male" : "Female";
     }
 
+    Sex getSex() const {
+        return this->sex;
+    }
+
     // Set the sex of the bunny
     void setSex(Sex newSex) {
         this->sex = newSex;
@@ -154,5 +158,6 @@ void removeDeadBunnies(Bunny*& head);
 void breedBunnies(Bunny*& head);
 void foodShortage(Bunny*& head);
 void infectBunnies(Bunny* head);
+void sortBunnies(Bunny* head);
 
 #endif // BUNNY_H
